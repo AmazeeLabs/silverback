@@ -83,8 +83,7 @@ class Init extends SilverbackCommand {
     foreach ($finder as $file) {
       $this->fileSystem->copy(
         $file->getRealPath(),
-        $this->rootDirectory . '/' . $file->getRelativePath() . '/' . $file->getFilename(),
-        TRUE
+        $this->rootDirectory . '/' . $file->getRelativePath() . '/' . $file->getFilename()
       );
     }
 
@@ -105,18 +104,15 @@ class Init extends SilverbackCommand {
       file_put_contents($filepath, str_replace($toReplace, $values, $contents));
     }
 
-    if (file_exists($this->rootDirectory . '/.lando.yml')) {
-      unlink($this->rootDirectory . '/.lando.yml');
-    }
-    file_put_contents($this->rootDirectory . '/.lando.yml', "name: $projectName\nrecipe: drupal8\nconfig:\n  webroot: web\n");
-
-    if (file_exists($this->rootDirectory . '/.env.example')) {
-      unlink($this->rootDirectory . '/.env.example');
+    if (!file_exists($this->rootDirectory . '/.lando.yml')) {
+      file_put_contents($this->rootDirectory . '/.lando.yml', "name: $projectName\nrecipe: drupal8\nconfig:\n  webroot: web\n");
     }
 
-    file_put_contents($this->rootDirectory . '/.env.example', implode("\n", array_map(function ($env) use ($environment) {
-      return "# {$environment[$env]['description']}\n$env=\"{$environment[$env]['value']}\"\n";
-    }, array_keys($environment))));
+    if (!file_exists($this->rootDirectory . '/.env.example')) {
+      file_put_contents($this->rootDirectory . '/.env.example', implode("\n", array_map(function ($env) use ($environment) {
+        return "# {$environment[$env]['description']}\n$env=\"{$environment[$env]['value']}\"\n";
+      }, array_keys($environment))));
+    }
 
     $composerJson = json_decode(file_get_contents($this->rootDirectory . '/composer.json'), TRUE);
     $updateHook = './vendor/bin/silverback init --no-interaction';
