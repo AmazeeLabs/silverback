@@ -41,7 +41,7 @@
         },
         "patches": {
             "drupal/core": {
-                "Add an API for converting entity type schemas to (non-)revisionable/(non-)translatable, with or without data (#2984782 - 27)": "https://www.drupal.org/files/issues/2018-10-28/2984782-27.patch"
+                "[PP-1] Entity type CRUD operations must use the last installed entity type and field storage definitions (#2976035 - 48)": "https://www.drupal.org/files/issues/2018-11-12/2976035-48.patch"
             }
         },
         "enable-patching": true
