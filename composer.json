@@ -42,7 +42,8 @@
         "patches": {
             "drupal/core": {
                 "[PP-1] Entity type CRUD operations must use the last installed entity type and field storage definitions (#2976035 - 48)": "https://www.drupal.org/files/issues/2018-11-12/2976035-48.patch",
-                "[PP-1] Convert taxonomy terms to be revisionable (#2880149 - 197)": "https://www.drupal.org/files/issues/2018-11-12/diff-2880149-197--2984782-29.txt"
+                "[PP-1] Convert taxonomy terms to be revisionable (#2880149 - 197)": "https://www.drupal.org/files/issues/2018-11-12/diff-2880149-197--2984782-29.txt",
+                "Convert custom menu links to be revisionable (#2880152 - 30)": "https://www.drupal.org/files/issues/2018-10-10/2880152-30-for-review.patch"
             }
         },
         "enable-patching": true
