@@ -43,7 +43,9 @@ Update the packages, require the `amazeelabs/silverback` composer package and in
 
 ```bash
 composer update
+composer remove webflo/drupal-core-require-dev --dev
 composer remove drupal/core cweagans/composer-patches
+composer require paragonie/random_compat ^2.0
 composer require amazeelabs/silverback:8.7.x-dev
 composer install
 ./vendor/bin/silverback init
