@@ -71,8 +71,8 @@ class Init extends SilverbackCommand {
         'description' => 'Cypress base url.'
       ],
       'CYPRESS_TAGS' => [
-        'value' => '@assignee:$SB_JIRA_USER and @WIP',
-        'description' => '`cypress run` will only execute tests based on tags.'
+        'value' => '',
+        'description' => '`cypress run` will only execute tests based on tags. Examples: "@assignee:$SB_JIRA_USER and @WIP", "@COMPLETED".'
       ],
     ];
 
