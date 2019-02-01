@@ -56,7 +56,8 @@ class Init extends SilverbackCommand {
       ],
       'SB_JIRA_PASS' => [
         'value' => '',
-        'description' => 'Jira password.',
+        'description' => 'Jira password. This variable is commented out by default to not override the Travis value (passwords are usually added as a secured environment variables in Travis). Uncomment it in your .env file.',
+        'commentOut' => TRUE,
       ],
       'SB_JIRA_PROJECTS' => [
         'value' => '',
@@ -115,7 +116,8 @@ class Init extends SilverbackCommand {
     }
 
     file_put_contents($this->rootDirectory . '/.env.example', implode("\n", array_map(function ($env) use ($environment) {
-      return "# {$environment[$env]['description']}\n$env=\"{$environment[$env]['value']}\"\n";
+      $commentSign = empty($environment[$env]['commentOut']) ? '' : '# ';
+      return "# {$environment[$env]['description']}\n{$commentSign}{$env}=\"{$environment[$env]['value']}\"\n";
     }, array_keys($environment))));
 
     $composerJson = json_decode(file_get_contents($this->rootDirectory . '/composer.json'), TRUE);
