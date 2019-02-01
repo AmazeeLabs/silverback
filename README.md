@@ -38,14 +38,14 @@ yarn
 
 If you've set up `direnv` correctly, it will complain at this point that there is an unknown `.envrc` file. Just execute `direnv allow` to enable it. From now own environment variables and executable search paths will be set automatically whenever you enter this directory. Here is how it should look in case of a correct installation:  
 ```
-me@local:~/Project $ cd my-project/
+me@local:~/Projects $ cd my-project/
 direnv: error .envrc is blocked. Run `direnv allow` to approve its content.
-me@local:~/Project/my-project $ direnv allow
+me@local:~/Projects/my-project $ direnv allow
 direnv: loading .envrc
 direnv: export +CYPRESS_BASE_URL ... +SB_TEST_CONTENT ~PATH
-me@local:~/Project/my-project $ cd ..
+me@local:~/Projects/my-project $ cd ..
 direnv: unloading
-me@local:~/Project $ cd my-project/
+me@local:~/Projects $ cd my-project/
 direnv: loading .envrc
 direnv: export +CYPRESS_BASE_URL ... +SB_TEST_CONTENT ~PATH
 ```
