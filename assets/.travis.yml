@@ -29,7 +29,19 @@ script:
   - drush serve > log.txt 2>&1 &
   - until netstat -an 2>/dev/null | grep '8888.*LISTEN'; sleep 1; curl -I http://127.0.0.1:8888 ; do true; done
   - if [[ -d web/modules/custom ]]; then phpunit web/modules/custom; fi
-  - cd tests && export CYPRESS_TAGS="@COMPLETED" && cypress run
+  - |
+    cd tests
+    # The regex to get jira issue number from a git branch.
+    regex='(.*)(^|/)([A-Z]+[A-Z0-9]?-[0-9]+)(.*)'
+    # Get git branch.
+    branch="${TRAVIS_PULL_REQUEST_BRANCH:-$TRAVIS_BRANCH}"
+    # Get the jira issue number from branch name and add it to cypress tags. Or
+    # run only completed tests.
+    [[ $branch =~ $regex ]] && \
+      export CYPRESS_TAGS="@${BASH_REMATCH[3]} or @COMPLETED" || \
+      export CYPRESS_TAGS="@COMPLETED"
+    echo "Going to run cypress with the following tags: $CYPRESS_TAGS"
+    cypress run
   - kill $(jobs -p) || true
 
 notifications:
