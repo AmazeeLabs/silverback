@@ -46,5 +46,8 @@
     "typescript": "^3.3.3333",
     "url-loader": "^1.1.2",
     "webpack-cli": "^3.2.3"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^5.0.3"
   }
 }
