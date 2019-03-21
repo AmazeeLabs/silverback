@@ -1,5 +1,6 @@
 import { addDecorator, configure } from '@storybook/html';
 import { withA11y } from '@storybook/addon-a11y';
+import { setConsoleOptions } from '@storybook/addon-console';
 import '../scripts';
 
 import Twig from 'twig';
@@ -16,5 +17,8 @@ function loadStories() {
 
 // Helps make UI components more accessible.
 addDecorator(withA11y);
+setConsoleOptions({
+  panelExclude: [],
+});
 
 configure(loadStories, module);
