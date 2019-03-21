@@ -1,2 +1,3 @@
-const req = require.context('./editor', true, /\.component\.(ts|js)$/);
-req.keys().forEach(filename => req(filename));
+const components = require.context('./editor', true, /\/index\.(ts|js)$/);
+components.keys().forEach(filename => components(filename));
+
