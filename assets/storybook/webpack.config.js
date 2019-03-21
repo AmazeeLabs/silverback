@@ -3,7 +3,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const jsRule = {
-  test: /\.(ts|js)?$/,
+  test: /\.(ts|js)$/,
   loader: 'babel-loader',
   options: {
     presets: [
