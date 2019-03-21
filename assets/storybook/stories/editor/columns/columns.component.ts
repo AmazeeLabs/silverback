@@ -6,6 +6,7 @@ import {
     customElement
 } from "lit-element";
 
+@customElement('sb-columns')
 export default class ColumnsComponent extends LitElement {
     static get styles() {
         return css`
@@ -27,5 +28,3 @@ export default class ColumnsComponent extends LitElement {
         `;
     }
 }
-
-customElement('sb-columns')(ColumnsComponent);

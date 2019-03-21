@@ -10,6 +10,9 @@ module.exports = ({ config, mode }) => {
           targets: {chrome: '63'},
 				}],
 				["@babel/typescript"]
+			],
+			plugins: [
+				["@babel/plugin-proposal-decorators", { legacy: true }],
 			]
 		}
 	});
