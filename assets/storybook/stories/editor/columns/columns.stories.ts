@@ -1,7 +1,5 @@
 import { storiesOf } from "@storybook/html";
-import './columns';
-
-import snippet from './columns.html';
+import './columns.component';
 
 storiesOf('Editor/Columns', module)
     .add('simple', () => `

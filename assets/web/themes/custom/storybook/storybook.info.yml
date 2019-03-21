@@ -11,7 +11,7 @@ regions:
 component-libraries:
   storybook:
     paths:
-      - ../../../../storybook/stories
+      - ../../../../storybook/stories/twig
 
 libraries:
   - storybook/storybook
