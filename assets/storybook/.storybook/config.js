@@ -2,6 +2,12 @@ import { addDecorator, configure } from '@storybook/html';
 import { withA11y } from '@storybook/addon-a11y';
 import '../scripts';
 
+import Twig from 'twig';
+import twigDrupal from 'twig-drupal-filters';
+
+// Add the filters to Drupal.
+twigDrupal(Twig);
+
 // Automatically import all files ending in *.stories.js
 const req = require.context('../stories', true, /\.stories\.(ts|js)?$/);
 function loadStories() {
@@ -9,6 +15,6 @@ function loadStories() {
 }
 
 // Helps make UI components more accessible.
-addDecorator(withA11y)
+addDecorator(withA11y);
 
 configure(loadStories, module);

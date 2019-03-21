@@ -3,6 +3,6 @@
     frontpage: '/',
     sitename: 'AmazeeLabs'
   } %}
-  <div class="page__content">{{ content }}</div>
+  <div class="page__content">{{ content | clean_id }}</div>
   <div class="page__sidebar">{{ sidebar }}</div>
 </div>
