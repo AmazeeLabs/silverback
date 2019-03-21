@@ -1,4 +1,4 @@
-import { storiesOf } from "@storybook/react";
+import { storiesOf } from "@storybook/html";
 
 const Header = require('./header.html.twig');
 

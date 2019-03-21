@@ -1,8 +1,7 @@
-import { storiesOf } from "@storybook/react";
-import * as faker from "faker";
+import { storiesOf } from "@storybook/html";
 
 const Page = require('./page.html.twig');
 
 
 storiesOf('Page', module)
-    .add('Simple', () => Page({content: faker.lorem.paragraphs(3)}));
+    .add('Simple', () => Page({content: "test"}));

@@ -2,14 +2,13 @@ const path = require('path');
 
 module.exports = ({ config, mode }) => {
 	config.module.rules.push({
-		test: /\.tsx?$/,
+		test: /\.(ts|js)?$/,
 		loader: 'babel-loader',
 		options: {
 			presets: [
 				["@babel/env", {
           targets: {chrome: '63'},
 				}],
-				["@babel/react"],
 				["@babel/typescript"]
 			]
 		}
@@ -44,6 +43,5 @@ module.exports = ({ config, mode }) => {
 	});
 
 	config.resolve.extensions.push('.ts');
-	config.resolve.extensions.push('.tsx');
 	return config;
 };
