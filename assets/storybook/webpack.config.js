@@ -2,13 +2,30 @@ const path = require('path');
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+const jsRule = {
+  test: /\.tsx?$/,
+  loader: 'babel-loader',
+  options: {
+    presets: [
+      ["@babel/env", {
+        targets: {chrome: '63'},
+      }],
+      ["@babel/react"],
+      ["@babel/typescript"]
+    ]
+  }
+};
+
 module.exports = {
-  entry: './scripts.ts',
+  entry: {
+    scripts: './scripts.ts',
+    editor: './editor.ts',
+  },
   output: {
-    filename: 'scripts.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist')
   },
-  resolve: { extensions: ['.ts', '.js'] },
+  resolve: { extensions: ['.ts', '.js', '.tsx', '.jsx'] },
 
   plugins: [
     new MiniCssExtractPlugin({
@@ -19,10 +36,7 @@ module.exports = {
 
   module: {
     rules: [
-      {
-        test: /\.ts$/,
-        use: 'babel-loader',
-      },
+      jsRule,
       {
         test: /\.css$/,
         use: [

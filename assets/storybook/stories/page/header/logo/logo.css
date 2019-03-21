@@ -1,0 +1,8 @@
+.logo {
+  display: block;
+  text-indent: -999em;
+  overflow: hidden;
+  background: url(./logo.svg) no-repeat center;
+  width: 100px;
+  height: 100px;
+}

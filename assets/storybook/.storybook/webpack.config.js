@@ -1,24 +1,23 @@
-
-const conf = require('../webpack.config');
 const path = require('path');
 
 module.exports = ({ config, mode }) => {
 	config.module.rules.push({
-		test: /\.ts$/,
-		loader: require.resolve('babel-loader'),
+		test: /\.tsx?$/,
+		loader: 'babel-loader',
+		options: {
+			presets: [
+				["@babel/env", {
+          targets: {chrome: '63'},
+				}],
+				["@babel/react"],
+				["@babel/typescript"]
+			]
+		}
 	});
 
 	config.module.rules.push({
 		test: /\.(jpe?g|svg|png)$/,
-		loader: "url-loader",
-		options: {
-			limit: 8192,
-			fallback: "file-loader",
-
-			// fallback options
-			name: '[name].[hash].[ext]',
-			outputPath: 'images/',
-		},
+		loader: "file-loader",
 	});
 
 	config.module.rules.push(      {
@@ -45,5 +44,6 @@ module.exports = ({ config, mode }) => {
 	});
 
 	config.resolve.extensions.push('.ts');
+	config.resolve.extensions.push('.tsx');
 	return config;
 };

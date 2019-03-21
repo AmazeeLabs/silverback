@@ -3,6 +3,10 @@ module.exports = {
   description: 'Silverback documentation.',
   base: '/silverback/',
   themeConfig: {
+    algolia: {
+      indexName: 'silverback',
+      apiKey: '96b7a6dce03d75cac64b0e9715fea89e'
+    },
     nav: [
       {text: 'Home', link: '/'},
       {
@@ -35,5 +39,5 @@ module.exports = {
   },
   markdown: {
     lineNumbers: true
-  }
+  },
 };

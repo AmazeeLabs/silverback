@@ -46,9 +46,37 @@ git clone git@github.com:drupal-graphql/graphql.git
 3. Require the dev version of the GraphQL module:
 
 ```bash
-composer require drupal/graphql:8.x-3.x-dev
+composer require drupal/graphql:"8.x-3.x-dev as 3.0"
 ```
 
-Now the package in Drupal should be symlinked to the local checkout. The [Composer merge plugin](https://github.com/wikimedia/composer-merge-plugin)
-could be used to avoid directly modifying `composer.json`. Unfortunately, also in this case
-`composer.lock` will be modified and has to be reverted before committing it to the git repository.
+Now the package in Drupal should be symlinked to the local checkout.
+
+`amazeelabs/silverback` includes the `wikimedia/composer-merge-plugin` and will
+look for a `composer.json` in the `packages` directory. It should not be committed
+but used to persist the mentioned local overrides. Simply add the repositories and
+the dependency aliases to this file ...
+
+```json
+{
+  "repositories": [
+    {
+      "type": "path",
+      "url": "./packages/drupal/ckeditor5_sections"
+    },
+    {
+      "type": "path",
+      "url": "./packages/drupal/graphql"
+    },
+    {
+      "type": "path",
+      "url": "./packages/amazeelabs/silverback"
+    }
+  ],
+  "require": {
+    "drupal/graphql": "8.x-3.x-dev as 3.0",
+    "drupal/ckeditor5_sections": "8.x-1.x-dev as 1.0"
+  }
+}
+```
+
+... and run `composer update` to include the local packages.

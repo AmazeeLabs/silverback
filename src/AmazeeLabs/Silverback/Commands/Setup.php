@@ -38,7 +38,7 @@ class Setup extends SilverbackCommand {
 
     $this->fileSystem->remove('web/sites/default/files');
 
-    if (!$this->fileSystem->exists($this->cacheDir . '/' . $hash) || $this->getOption('force')) {
+    if (!$this->fileSystem->exists($this->cacheDir . '/' . $hash) || $input->getOption('force')) {
       $process = new Process([
         './vendor/bin/drush', 'si', '-y', 'minimal',
         '--sites-subdir', 'default',
