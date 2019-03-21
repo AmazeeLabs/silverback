@@ -10,9 +10,11 @@ import twigDrupal from 'twig-drupal-filters';
 twigDrupal(Twig);
 
 // Automatically import all files ending in *.stories.js
-const req = require.context('../stories', true, /\.stories\.(ts|js)?$/);
+const twig = require.context('../twig', true, /\.stories\.(ts|js)$/);
+const editor = require.context('../editor', true, /\.stories\.(ts|js)$/);
 function loadStories() {
-  req.keys().forEach(filename => req(filename));
+  twig.keys().forEach(filename => twig(filename));
+  editor.keys().forEach(filename => editor(filename));
 }
 
 // Helps make UI components more accessible.

@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = ({ config, mode }) => {
 	config.module.rules.push({
-		test: /\.(ts|js)?$/,
+		test: /\.(ts|js)$/,
 		loader: 'babel-loader',
 		options: {
 			presets: [
@@ -30,7 +30,7 @@ module.exports = ({ config, mode }) => {
 				options: {
 					twigOptions: {
 						namespaces: {
-							storybook: path.resolve('stories/twig')
+							storybook: path.resolve('twig')
 						}
 					}
 				}

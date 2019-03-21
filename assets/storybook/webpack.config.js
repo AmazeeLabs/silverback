@@ -48,21 +48,6 @@ module.exports = {
         ]
       },
       {
-        test: /\.twig$/,
-        use: [
-          {
-            loader: 'twig-loader',
-            options: {
-              twigOptions: {
-                namespaces: {
-                  storybook: 'stories'
-                }
-              }
-            }
-          }
-        ],
-      },
-      {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
           {
