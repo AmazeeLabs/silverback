@@ -70,7 +70,7 @@ services:
       lagoon.type: nginx
     environment:
       <<: *default-environment # loads the defined environment variables from the top
-      LAGOON_LOCALDEV_URL: storybook.${COMPOSE_PROJECT_NAME}.docker.amazee.io # generate another route for nginx, by default we go to varnish
+      LAGOON_LOCALDEV_URL: storybook.${COMPOSE_PROJECT_NAME}.docker.amazee.io # generate another route for storybook
     networks:
       - amazeeio-network
       - default

@@ -31,5 +31,7 @@ node_modules
 cypress/integration
 !cypress/integration/.gitkeep
 
+docker-compose.override.yml
+
 # Ignore the development install log.
 .install.log

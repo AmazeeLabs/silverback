@@ -10,12 +10,12 @@ use Drupal\Component\Assertion\Handle;
 /**
  * Default development database.
  */
-$databases['default']['default'] = array(
+$databases['default']['default'] = [
   'database' => 'sites/default/files/.sqlite',
   'prefix' => '',
   'namespace' => 'Drupal\\Core\\Database\\Driver\\sqlite',
   'driver' => 'sqlite',
-);
+];
 
 assert_options(ASSERT_ACTIVE, TRUE);
 Handle::register();
