@@ -39,7 +39,7 @@ services:
     environment:
       << : *default-environment # loads the defined environment variables from the top
     ports:
-    - "1234:1234"
+    - "1234" # exposes the port 1234 with a random local port, find it with `docker-compose port cli 1234`
     extra_hosts:
     - "${COMPOSE_PROJECT_NAME}.docker.amazee.io:172.17.0.1"
 
