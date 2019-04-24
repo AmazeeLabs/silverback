@@ -16,7 +16,7 @@ future.
 
 ## Working with storybook
 
-All components should be added in the `storybook/stories` folder along with
+All components should be added in the `storybook/twig` folder along with
 their example stories.
 
 To work with storybook, you first should run `yarn` in the root directory to 
