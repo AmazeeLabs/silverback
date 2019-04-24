@@ -19,10 +19,9 @@ future.
 All components should be added in the `storybook/stories` folder along with
 their example stories.
 
-To work with storybook, you first should run `yarn` inside the `storybook`
-folder, to install the dependencies. To run storybook in development mode
-execute `yarn run storybook`. This will bring up the storybook UI with hot
-reloading.
+To work with storybook, you first should run `yarn` in the root directory to 
+install the dependencies. To run storybook in development mode execute 
+`yarn run storybook`. This will bring up the storybook UI with hot reloading.
 
 To compile the stylesheets for use with Drupal, run `yarn run build-library`.
 This will compile the javascript and css components and expose them to the theme
