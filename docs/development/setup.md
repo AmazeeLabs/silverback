@@ -28,7 +28,7 @@ yarn
 
 Note that the seemingly unnecessary extra `composer install` is to allow patches to be applied.
 
-If you've set up `direnv` correctly, it will complain at this point that there is an unknown `.envrc` file. Just execute `direnv allow` to enable it. From now own environment variables and executable search paths will be set automatically whenever you enter this directory. Here is how it should look in case of a correct installation:  
+If you've set up `direnv` correctly, it will complain at this point that there is an unknown `.envrc` file. Just execute `direnv allow` to enable it. From now on environment variables and executable search paths will be set automatically whenever you enter this directory. Here is how it should look in case of a correct installation:  
 ```
 me@local:~/Projects $ cd my-project/
 direnv: error .envrc is blocked. Run `direnv allow` to approve its content.
