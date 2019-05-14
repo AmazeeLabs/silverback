@@ -15,11 +15,11 @@ tasks:
         command: env
         service: cli
     - run:
-        name: IF no Drupal installed drush si with no email sending
+        name: IF no Drupal install via drush si
         command: |
             if ! drush status --fields=bootstrap | grep -q "Successful"; then
                 # no drupal installed, we install drupal from scratch
-                drush si config_installer -y --account-name=admin --account-pass=admin install_configure_form.enable_update_status_module=NULL install_configure_form.enable_update_status_emails=NULL
+                drush si -y minimal --sites-subdir=default --config-dir=../config/sync --account-name=admin --account-pass=admin
             fi
         service: cli
         shell: bash
