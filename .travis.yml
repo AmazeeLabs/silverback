@@ -37,10 +37,10 @@ install:
 - if [[ -n "$SB_JIRA_PROJECTS" ]]; then silverback download-tests; fi
 
 script:
-#- silverback setup
-#- drush serve > log.txt 2>&1 &
-#- until netstat -an 2>/dev/null | grep '8888.*LISTEN'; sleep 1; curl -I http://127.0.0.1:8888 ; do true; done
-#- composer run-script run-tests --timeout 0
+- silverback setup
+- drush serve > log.txt 2>&1 &
+- until netstat -an 2>/dev/null | grep '8888.*LISTEN'; sleep 1; curl -I http://127.0.0.1:8888 ; do true; done
+- composer run-script run-tests --timeout 0
 - cd $TRAVIS_BUILD_DIR/docs && npm run build
 - kill $(jobs -p) || true
 
