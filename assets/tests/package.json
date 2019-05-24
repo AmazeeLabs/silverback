@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/AmazeeLabs/silverback#readme",
   "dependencies": {
-    "cypress": "^3.1.4",
-    "cypress-cucumber-preprocessor": "^1.9.1"
+    "@percy/cypress": "^1.0.9",
+    "cypress": "^3.3.0",
+    "cypress-cucumber-preprocessor": "^1.11.2"
   }
 }

@@ -26,8 +26,8 @@ install:
 script:
   - silverback setup
   - if [[ -n "$SB_JIRA_PROJECTS" ]]; then silverback download-tests; fi
-  - drush serve > log.txt 2>&1 &
-  - until netstat -an 2>/dev/null | grep '8888.*LISTEN'; sleep 1; curl -I http://127.0.0.1:8888 ; do true; done
+  - drush serve 8889 > log.txt 2>&1 &
+  - until netstat -an 2>/dev/null | grep '8889.*LISTEN'; sleep 1; curl -I http://127.0.0.1:8889 ; do true; done
   - if [[ -d web/modules/custom ]]; then phpunit web/modules/custom; fi
   - |
     cd tests

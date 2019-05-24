@@ -12,11 +12,13 @@ class Teardown extends SilverbackCommand {
     $this->setName('teardown');
     $this->setDescription('Remove an existing test site.');
     $this->addOption('restore', 'r', InputOption::VALUE_NONE, 'Restore the latest a backup of the current site.');
+    $this->addOption('cypress', 'c', InputOption::VALUE_NONE, 'Use cypress subdir.');
   }
 
   protected function execute(InputInterface $input, OutputInterface $output) {
     parent::execute($input, $output);
-    $this->fileSystem->remove('web/sites/default/files');
+    $siteDir = $input->getOption('cypress') ? 'cypress' : 'default';
+    $this->fileSystem->remove('web/sites/' . $siteDir . '/files');
     if ($input->getOption('restore') && $this->fileSystem->exists($this->cacheDir . '/backup')) {
       $this->copyDir($this->cacheDir . '/backup', 'web/sites/default/files');
     }

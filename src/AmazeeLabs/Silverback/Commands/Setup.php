@@ -15,10 +15,16 @@ class Setup extends SilverbackCommand {
     $this->setDescription('Install a new test site.');
     $this->addOption('backup', 'b', InputOption::VALUE_NONE, 'Create a backup of the current site.');
     $this->addOption('force', 'f', InputOption::VALUE_NONE, 'Force installation.');
+    $this->addOption('cypress', 'c', InputOption::VALUE_NONE, 'Use cypress subdir.');
   }
 
   protected function execute(InputInterface $input, OutputInterface $output) {
     parent::execute($input, $output);
+
+    $siteDir = $input->getOption('cypress') ? 'cypress' : 'default';
+    if ($input->getOption('cypress') && !$this->fileSystem->exists('web/sites/' . $siteDir))  {
+      $this->copyDir('web/sites/default', 'web/sites/' . $siteDir);
+    }
 
     $configDir = 'config/sync';
     $hash = $this->getConfigHash($this->rootDirectory . '/' . $configDir);
@@ -27,20 +33,20 @@ class Setup extends SilverbackCommand {
       $this->fileSystem->remove($this->cacheDir . '/' . $hash);
     }
 
-    if ($input->getOption('backup') && $this->fileSystem->exists('web/sites/default/files')) {
-      $this->copyDir('web/sites/default/files', $this->cacheDir . '/backup');
+    if ($input->getOption('backup') && $this->fileSystem->exists('web/sites/' . $siteDir . '/files')) {
+      $this->copyDir('web/sites/' . $siteDir . '/files', $this->cacheDir . '/backup');
     }
 
     if (!$this->fileSystem->exists('config/sync/core.extension.yml')) {
       $this->copyDir('vendor/amazeelabs/silverback/config', 'config/sync');
     }
 
-    $this->fileSystem->remove('web/sites/default/files');
+    $this->fileSystem->remove('web/sites/' . $siteDir . '/files');
 
     if (!$this->fileSystem->exists($this->cacheDir . '/' . $hash) || $input->getOption('force')) {
       $process = new Process([
         './vendor/bin/drush', 'si', '-y', 'minimal',
-        '--sites-subdir', 'default',
+        '--sites-subdir', $siteDir,
         '--config-dir', '../' . $configDir,
         '--account-name', getenv('SB_ADMIN_USER'),
         '--account-pass', getenv('SB_ADMIN_PASS'),

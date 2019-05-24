@@ -79,6 +79,10 @@ class Init extends SilverbackCommand {
         'value' => 'BANANA',
         'description' => 'Hash salt required by drupal and used in settings.php.',
       ],
+      'PERCY_TOKEN' => [
+        'value' => '',
+        'description' => 'The API token for percy.io',
+      ],
     ];
 
     $finder = new Finder();

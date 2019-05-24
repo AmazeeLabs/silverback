@@ -76,5 +76,5 @@ Cypress.Commands.add('inputByValue', (value) => {
  * Execute a drush command.
  */
 Cypress.Commands.add('drush', command => {
-  return cy.exec(`cd .. && drush ${command}`);
+  return cy.exec(`cd .. && drush --uri=http://localhost:8889 ${command}`);
 });
