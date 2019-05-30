@@ -3,7 +3,7 @@ Feature: Login
   Basic Drupal site setup and administration login.
 
   Background:
-    Initial site setup with working login.
+    Initial site setup with working login. Administration toolbar is enabled.
 
 
   @Silverback @COMPLETED
