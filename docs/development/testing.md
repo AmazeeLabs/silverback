@@ -17,6 +17,7 @@ Custom modules are tested with [Drupal's standard testing frameworks](https://ww
 For end to end testing, a [Cypress] configuration is provided in the `tests` folder. `silverback init` should have added some basic tests that you can run immediately.
 
 ```bash
+drush serve :8889
 cd tests
 npm install
 cypress run
