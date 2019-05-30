@@ -38,7 +38,6 @@ install:
 
 script:
 - silverback setup
-- chmod -R 777 /tmp/silverback
 - drush serve :8889 > log.txt 2>&1 &
 - until netstat -an 2>/dev/null | grep '8889.*LISTEN'; sleep 1; curl -I http://127.0.0.1:8889 ; do true; done
 - composer run-script run-tests --timeout 0
