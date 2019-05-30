@@ -68,7 +68,7 @@ class Init extends SilverbackCommand {
         'description' => 'Drush base url.',
       ],
       'CYPRESS_BASE_URL' => [
-        'value' => '$SB_BASE_URL',
+        'value' => 'http://localhost:8889',
         'description' => 'Cypress base url.',
       ],
       'CYPRESS_TAGS' => [

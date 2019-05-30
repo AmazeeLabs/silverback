@@ -1,7 +1,13 @@
 /* global Given, When, Then */
 
+beforeEach(function () {
+  cy.prepareSnapshot('login-preparations', function () {
+    cy.drush('en toolbar');
+    cy.drush('cr');
+  });
+})
+
 const login = (user, pass) => () => {
-  cy.drush('en toolbar');
   cy.visit('/user/login');
   cy.get('#edit-name').type(user);
   cy.get('#edit-pass').type(pass);

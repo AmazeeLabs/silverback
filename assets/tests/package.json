@@ -20,5 +20,8 @@
     "@percy/cypress": "^1.0.9",
     "cypress": "^3.3.0",
     "cypress-cucumber-preprocessor": "^1.11.2"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
   }
 }
