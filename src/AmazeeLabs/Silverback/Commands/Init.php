@@ -134,6 +134,7 @@ class Init extends SilverbackCommand {
       "cd tests && npm install && CYPRESS_TAGS=@COMPLETED cypress run",
     ];
     $composerJson['extra']['enable-patching'] = TRUE;
+    $composerJson['extra']['composer-exit-on-patch-failure'] = TRUE;
 
     // Search for composer.json overrides in the local packages directory.
     $composerJson['extra']['merge-plugin']['include'] = ['packages/composer.json'];

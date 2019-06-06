@@ -47,5 +47,6 @@
                 "#2718657 - Drupal\\language\\LanguageNegotiator::updateConfiguration() is passed a NULL": "https://www.drupal.org/files/issues/2019-02-28/language-2718657-17.patch"
             }
         }
-    }
+    },
+    "composer-exit-on-patch-failure": true
 }
