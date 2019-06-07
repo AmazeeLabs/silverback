@@ -39,7 +39,14 @@ install:
 script:
 - silverback setup
 - drush serve :8889 > log.txt 2>&1 &
-- until netstat -an 2>/dev/null | grep '8889.*LISTEN'; sleep 1; curl -I http://127.0.0.1:8889 ; do true; done
+  # Wait for drush serve to start up, but only for 20 seconds.
+  - DRUSH_SERVE_WAIT=0
+  - until netstat -an 2>/dev/null | grep '8889.*LISTEN'; \
+      sleep 1; curl -I http://127.0.0.1:8889 \
+      || DRUSH_SERVE_WAIT=$(($DRUSH_SERVE_WAIT + 1)) \
+      && echo "Waited $DRUSH_SERVE_WAIT seconds for drush serve." \
+      && (($DRUSH_SERVE_WAIT > 19)) ; \
+      do true; done
 - composer run-script run-tests --timeout 0
 - cd $TRAVIS_BUILD_DIR/docs && npm run build
 - kill $(jobs -p) || true
