@@ -8,6 +8,7 @@ const StyleLintPlugin = require('stylelint-webpack-plugin');
  */
 const javascript = {
   test: /\.(ts|js)$/,
+  exclude: /node_modules/,
   use: [
     {
       loader: 'babel-loader',
