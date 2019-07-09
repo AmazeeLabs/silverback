@@ -33,9 +33,9 @@
         "drupal/moderation_state_permissions": "dev-1.x",
         "drupal/tmgmt": "^1.6",
         "drupal/linkit": "^5",
-        "drupal/ckeditor5_sections": "^1.x-dev",
-        "drupal/delivery": "^1.x-dev",
-        "drupal/revision_tree": "^1.x-dev",
+        "drupal/ckeditor5_sections": "dev-1.x",
+        "drupal/delivery": "dev-1.x",
+        "drupal/revision_tree": "dev-1.x",
         "drupal/components": "1.1-alpha2",
         "drupal/cypress": "dev-1.x",
         "wikimedia/composer-merge-plugin": "^1.4"
