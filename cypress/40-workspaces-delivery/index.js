@@ -1,10 +1,10 @@
 /* global Given, When, Then */
 
-import {workspaces} from "../common/mappings";
+import {workspaces, languages} from "../common/mappings";
 
 beforeEach(function () {
   cy.prepareSnapshot('workspaces-delivery', function () {
-    cy.drush('scr cypress/integration/jira/SLB/39-workspaces-delivery/background.php');
+    cy.drush('scr cypress/integration/jira/SLB/40-workspaces-delivery/background.php');
     cy.drush('cr');
   });
   cy.drupalSession({ user: "admin" });
@@ -52,7 +52,7 @@ Then(/^the status table does not contain "([^"]*)"$/, (item) => {
 Given(/^a delivery "([^"]*)" has been created including all changes from workspace "([^"]*)"$/, (title, workspace) => {
   cy.visit(`/admin/delivery/workspace/${workspaces[workspace]}`);
   cy.get('#edit-label').type(title);
-  cy.get('input[value="Create delivery"]').click()
+  cy.get('input[value="Create delivery"]').click();
   cy.get('.title > .field').contains(title);
 });
 
@@ -145,5 +145,44 @@ When(/^the user enters "([^"]*)" as a custom title$/, (title) => {
 
 When(/^the user finishes resolution of this conflict$/, () => {
   cy.get('input[value="Resolve conflicts"]').click();
+});
+
+Given(/^there is a "([^"]*)" in workspace "([^"]*)" in language "([^"]*)"$/, () => {
+  // Nothing to do, it's already there.
+});
+
+Given(/^"([^"]*)" is delivered with "([^"]*)" from workspace "([^"]*)" to "([^"]*)"$/, (title, delivery, source, target) => {
+  cy.visit(`/admin/delivery/workspace/${workspaces[source]}`);
+  cy.get('#edit-label').type(delivery);
+  cy.get('input[value="Create delivery"]').click();
+  cy.contains('Push all changes').click();
+  cy.contains('Confirm').click();
+});
+
+When(/^the user adds language "([^"]*)" to "([^"]*)" in the workspace "([^"]*)"$/, (language, title, workspace) => {
+  cy.drupalSession({user: "admin", workspace: workspaces[workspace]});
+  cy.visit(`/cypress/entity/node/canonical?title=${encodeURI(title)}`);
+  cy.get('.tabs').contains('Translate').click();
+  cy.get('.region-content table').contains(language).closest('tr').contains('Add').click();
+  cy.get('#edit-title-0-value').type(' - ' + language);
+  cy.contains('Save').click();
+});
+
+When(/^the user forwards "([^"]*)" from the workspace "([^"]*)" to the workspace "([^"]*)"$/, (delivery, source, target) => {
+  cy.drupalSession({user: "admin", workspace: workspaces[source]});
+  cy.visit(`/cypress/entity/delivery/canonical?label=${encodeURI(delivery)}`);
+  cy.contains('Forward delivery').click();
+  cy.contains('Target workspace')
+      .closest('fieldset')
+      .contains(target).closest('.form-item')
+      .find('input').check();
+  cy.get(`input[value="Forward"]`).click();
+  cy.contains('Push all changes').click();
+  cy.contains('Confirm').click();
+});
+
+Then(/^the translation overview of "([^"]*)" in workspace "([^"]*)" does not contain a "([^"]*)" translation$/, (title, workspace, language) => {
+  cy.drupalSession({user: "admin", workspace: workspaces[workspace]});
+  cy.visit(`/cypress/entity/node/drupal:content-translation-overview?title=${encodeURI(title)}`);
 });
 

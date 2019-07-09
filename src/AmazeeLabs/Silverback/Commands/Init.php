@@ -42,17 +42,15 @@ class Init extends SilverbackCommand {
         'value' => 'admin',
         'description' => 'Drupal admin password.',
       ],
-      'SB_TEST_CONTENT' => [
-        'value' => '',
-        'description' => 'The name of a default content module to install.',
-      ],
       'SB_JIRA_HOST' => [
         'value' => '',
         'description' => 'Jira host to download testfiles from.',
+        'commentOut' => TRUE,
       ],
       'SB_JIRA_USER' => [
         'value' => '',
         'description' => 'Jira username.',
+        'commentOut' => TRUE,
       ],
       'SB_JIRA_PASS' => [
         'value' => '',
@@ -62,6 +60,7 @@ class Init extends SilverbackCommand {
       'SB_JIRA_PROJECTS' => [
         'value' => '',
         'description' => 'Jira projects, as handle:id pairs. e.g. PRO:12345. May contain multiple space separated values.',
+        'commentOut' => TRUE,
       ],
       'DRUSH_OPTIONS_URI' => [
         'value' => '$SB_BASE_URL',
@@ -74,6 +73,7 @@ class Init extends SilverbackCommand {
       'CYPRESS_TAGS' => [
         'value' => '',
         'description' => '`cypress run` will only execute tests based on tags. Examples: "@assignee:$SB_JIRA_USER and @WIP", "@COMPLETED".',
+        'commentOut' => TRUE,
       ],
       'DRUPAL_HASH_SALT' => [
         'value' => 'BANANA',
@@ -82,6 +82,7 @@ class Init extends SilverbackCommand {
       'PERCY_TOKEN' => [
         'value' => '',
         'description' => 'The API token for percy.io',
+        'commentOut' => TRUE,
       ],
     ];
 

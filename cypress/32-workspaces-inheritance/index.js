@@ -42,7 +42,10 @@ When(/^the user clicks the title of the "([^"]*)" row$/, (title) => {
   cy.contains(title).click();
 });
 
-Then(/^the displayed page title is "([^"]*)"$/, (title) => {
+Then(/^the page title on the view and edit screen is "([^"]*)"$/, (title) => {
+  cy.drupalSession({user: "admin"});
   cy.get('h1').contains(title);
+  cy.get('.tabs').contains('Edit').click();
+  cy.get('#edit-title-0-value').should('have.value', title);
 });
 
