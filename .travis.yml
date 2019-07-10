@@ -30,8 +30,8 @@ before_install:
 - nvm install 11
 
 install:
-  - nvm use 11
-  - cd $TRAVIS_BUILD_DIR/docs && npm install -g vuepress
+- nvm use 11
+- cd $TRAVIS_BUILD_DIR/docs && npm install -g vuepress
 - composer create-project drupal-composer/drupal-project:8.x-dev $DRUPAL_BUILD_DIR --no-interaction
 - cd $DRUPAL_BUILD_DIR
 - composer remove drupal/core
