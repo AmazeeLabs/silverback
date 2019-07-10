@@ -46,6 +46,7 @@ install:
 script:
 - cp -R $TRAVIS_BUILD_DIR/cypress $DRUPAL_BUILD_DIR/cypress/integration/SLB
 - silverback download-tests
+- find $DRUPAL_BUILD_DIR/cypress/integration
 - silverback-test
 - cd $TRAVIS_BUILD_DIR/docs && npm run build
 - kill $(jobs -p) || true
