@@ -44,7 +44,7 @@ install:
 - yarn
 
 script:
-- cp -R $TRAVIS_BUILD_DIR/cypress $DRUPAL_BUILD_DIR/cypress/integration/SLB
+- cp -R $TRAVIS_BUILD_DIR/cypress $DRUPAL_BUILD_DIR/cypress/integration/jira/SLB
 - silverback download-tests
 - find $DRUPAL_BUILD_DIR/cypress/integration
 - silverback-test
