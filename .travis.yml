@@ -5,7 +5,12 @@ sudo: false
 php:
 - 7.2
 node_js:
-- 10.9
+- 10.8
+
+addons:
+  apt:
+    packages:
+      - libgconf-2-4
 
 env:
   global:
