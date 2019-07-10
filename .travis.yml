@@ -5,7 +5,7 @@ sudo: false
 php:
 - 7.2
 node_js:
-- 10.8
+- 11.9
 
 addons:
   apt:
