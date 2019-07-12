@@ -131,8 +131,8 @@ class Init extends SilverbackCommand {
 
     $composerJson = json_decode(file_get_contents($this->rootDirectory . '/composer.json'), TRUE);
     $composerJson['scripts']['run-tests'] = [
-      "if [[ -d web/modules/custom ]]; then phpunit web/modules/custom; fi",
-      "cd tests && npm install && CYPRESS_TAGS=@COMPLETED cypress run",
+      "if [ -d web/modules/custom ]; then phpunit web/modules/custom; fi",
+      "yarn install && CYPRESS_TAGS=@COMPLETED cypress run",
     ];
     $composerJson['extra']['enable-patching'] = TRUE;
     $composerJson['extra']['composer-exit-on-patch-failure'] = TRUE;

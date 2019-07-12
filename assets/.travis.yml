@@ -3,9 +3,7 @@ dist: xenial
 sudo: false
 
 php:
-  - 7.2
-node_js:
-  - 10.9
+  - '7.2'
 
 cache:
   directories:
@@ -22,25 +20,25 @@ before_install:
   - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   - phpenv config-rm xdebug.ini
   - composer self-update
+  - nvm install 10
 
 install:
   - composer install
+  - yarn install
   - source .envrc
 
 script:
-  - if [[ -n "$SB_JIRA_PROJECTS" ]]; then silverback download-tests; fi
+  - silverback setup
+  - drush serve :8889 > log.txt 2>&1 &
+  # Wait for drush serve to start up, but only for 20 seconds.
   - |
-    # The regex to get jira issue number from a git branch.
-    regex='(.*)(^|/)([A-Z]+[A-Z0-9]?-[0-9]+)(.*)'
-    # Get git branch.
-    branch="${TRAVIS_PULL_REQUEST_BRANCH:-$TRAVIS_BRANCH}"
-    # Get the jira issue number from branch name and add it to cypress tags. Or
-    # run only completed tests.
-    [[ $branch =~ $regex ]] && \
-      export CYPRESS_TAGS="@${BASH_REMATCH[3]} or @COMPLETED" || \
-      export CYPRESS_TAGS="@COMPLETED"
-    echo "Going to run cypress with the following tags: $CYPRESS_TAGS"
-    composer run-script run-tests
+    DRUSH_SERVE_WAIT=0; \
+    until curl -sS http://127.0.0.1:8889 >/dev/null || (($DRUSH_SERVE_WAIT > 19)); \
+    do sleep 1 && \
+      DRUSH_SERVE_WAIT=$(($DRUSH_SERVE_WAIT + 1)) && \
+      echo "Waited $DRUSH_SERVE_WAIT seconds for drush serve."; \
+    done
+  - composer run-script run-tests --timeout 0
 
 notifications:
   email: false
