@@ -1,0 +1,44 @@
+uuid: 2a870119-74ff-42a2-b4a2-fda8b92826fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.article
+    - node.type.page
+  module:
+    - content_moderation
+id: simple
+label: Simple
+type: content_moderation
+type_settings:
+  states:
+    draft:
+      label: Draft
+      published: false
+      default_revision: false
+      weight: 0
+    published:
+      label: Published
+      published: true
+      default_revision: true
+      weight: 1
+  transitions:
+    create_new_draft:
+      label: 'Create New Draft'
+      to: draft
+      weight: 0
+      from:
+        - draft
+        - published
+    publish:
+      label: Publish
+      to: published
+      weight: 1
+      from:
+        - draft
+        - published
+  entity_types:
+    node:
+      - article
+      - page
+  default_moderation_state: draft

@@ -1,0 +1,27 @@
+uuid: f1b3c920-f98c-4fc9-9942-65d8566055c2
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.ckeditor5_sections
+  module:
+    - ckeditor5_sections
+_core:
+  default_config_hash: 5q68CeepsMfGbeQksLmeBK-z0WOYxdxlNnKJYC2ewoc
+format: ckeditor5_sections
+editor: ckeditor5_sections
+settings:
+  templateDirectory: ''
+  rootElement: page
+  enabledSections:
+    teaser: teaser
+    image: image
+    page: page
+    text: '0'
+  editorBuild: ckeditor5_sections/editor_build
+  plugins:
+    drupallink:
+      linkit_enabled: 1
+      linkit_profile: default
+  advanced: '{}'
+image_upload: {  }

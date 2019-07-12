@@ -1,0 +1,18 @@
+uuid: bedf1c17-22a9-4fe6-a7fd-0665dcce24ab
+langcode: en
+status: true
+dependencies:
+  module:
+    - ckeditor5_sections
+_core:
+  default_config_hash: YLWxZO_h_Xu5gJUPFmT5mXZ5tsXp5k9V9BO1HoCwnZg
+name: Sections
+format: ckeditor5_sections
+weight: -8
+filters:
+  sections_media_caption:
+    id: sections_media_caption
+    provider: ckeditor5_sections
+    status: true
+    weight: 0
+    settings: {  }
