@@ -70,7 +70,7 @@
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1",
-    "@percy/cypress": "^1.0.9",
+    "@percy/cypress": "^2.0.0",
     "cypress": "^3.4.1",
     "cypress-cucumber-preprocessor": "^1.13"
   },
