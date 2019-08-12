@@ -59,8 +59,9 @@ class Setup extends SilverbackCommand {
         if ($input->getOption('cypress')) {
           $baseCommand[] = '--uri=http://localhost:8889';
         }
-        $this->executeProcess(array_merge($baseCommand, ['updb', '-y']), $output);
+        $this->executeProcess(array_merge($baseCommand, ['updb', '-y', '--cache-clear=0']), $output);
         $this->executeProcess(array_merge($baseCommand, ['cim', '-y']), $output);
+        $this->executeProcess(array_merge($baseCommand, ['cr']), $output);
       }
       else {
         $this->executeProcess([
