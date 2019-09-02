@@ -24,6 +24,7 @@
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
+    "@percy/cypress": "^1.0.9",
     "@storybook/addon-a11y": "^5.0.6",
     "@storybook/addon-actions": "^5.0.6",
     "@storybook/addon-console": "^1.1.0",
@@ -38,6 +39,8 @@
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "core-js": "^3.0.1",
+    "cypress": "^3.4.1",
+    "cypress-cucumber-preprocessor": "^1.15.1",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-loader": "^2.1.2",
@@ -69,10 +72,7 @@
     "url-loader": "^1.1.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
-    "webpack-dev-server": "^3.2.1",
-    "@percy/cypress": "^1.0.9",
-    "cypress": "^3.4.1",
-    "cypress-cucumber-preprocessor": "^1.15.1"
+    "webpack-dev-server": "^3.2.1"
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true
