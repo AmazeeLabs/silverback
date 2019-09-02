@@ -24,7 +24,7 @@
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
-    "@percy/cypress": "^1.0.9",
+    "@percy/cypress": "^2.0.1",
     "@storybook/addon-a11y": "^5.0.6",
     "@storybook/addon-actions": "^5.0.6",
     "@storybook/addon-console": "^1.1.0",
