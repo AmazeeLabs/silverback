@@ -22,6 +22,7 @@
         "drupal/entity_usage": "^2.0@alpha",
         "drupal/environment_indicator": "^3.0",
         "drupal/field_group": "^3.0@RC",
+        "drupal/formdazzle": "^1.0",
         "drupal/graphql": "^3.0@RC",
         "drupal/graphql_twig": "^1.0@beta",
         "drupal/graphql_views": "^1.0@beta",
