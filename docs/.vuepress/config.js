@@ -14,6 +14,7 @@ module.exports = {
           {text: 'Setup', link: '/development/setup'},
           {text: 'Workflow', link: '/development/workflow'},
           {text: 'Testing', link: '/development/testing'},
+          {text: 'Debugging', link: '/development/debugging'},
           {text: 'Lagoon', link: '/development/lagoon'},
           {text: 'Storybook', link: '/development/storybook'},
           {text: 'Webpack', link: '/development/webpack'}
