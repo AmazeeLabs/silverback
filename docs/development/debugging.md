@@ -1,8 +1,6 @@
 # Debugging
 
-**Xdebug** is a great tool for PHP to step debug. Unfortunately it slows down PHP by around 20-25%. For tests and `drush` commands, it can be even slower.
-
-To mitigate this problem for web browser requests, Amazee.io inspects the parameters and cookies of your request and if it finds the string `xdebug`, it automatically forwards the request to a PHP process which has Xdebug enabled.
+**Xdebug** is a great PHP debugging tool. Unfortunately it slows down PHP by around 20-25%. For tests and `composer` and `drush` commands, it can be even slower. That's why debugging isn't turned on by default and why you should turn off debugging when you are done using it.
 
 These instructions describe using PHPStorm as the code editor for debugging. To use Visual Studio Code, you will need to install the [PHP Debug Adapter](https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-debug). @TODO: Add [docs for how to configure VSC](https://github.com/AmazeeLabs/silverback/blob/master/docs/development/debugging.md) to work with Amazee.io docker containers.
 
@@ -110,4 +108,4 @@ Before you can debug on Windows 10, you will need to install and configure a loo
       6. Click OK to close `Advanced TCP/IP` Settings.
       7. Click OK to close the `Internet Protocol (TCP/IP)` Properties.
       8. Click OK to close the connection properties.
-3. Follow the instructions above under [Debugging PHP or Twig files](#debugging-php-or-twig-files).
+3. Follow the instructions above: [Debugging PHP or Twig files](#debugging-php-or-twig-files).
