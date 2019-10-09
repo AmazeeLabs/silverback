@@ -39,3 +39,7 @@ docker-compose.override.yml
 
 # Ignore the silverback persistent snapshots directory
 .silverback-snapshots
+
+# Ignore Drupal console
+/console/
+
