@@ -24,5 +24,10 @@ function loadStories() {
 
 // Helps make UI components more accessible.
 addDecorator(withA11y);
+addParameters({
+  a11y: {
+    restoreScroll: true,
+  }
+});
 
 configure(loadStories, module);
