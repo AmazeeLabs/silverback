@@ -2,7 +2,7 @@
 import '@babel/polyfill';
 import '@webcomponents/webcomponentsjs/webcomponents-bundle';
 
-import { addDecorator, configure } from '@storybook/html';
+import { addDecorator, addParameters, configure } from '@storybook/html';
 import { withA11y } from '@storybook/addon-a11y';
 
 import Twig from 'twig';
