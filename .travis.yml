@@ -49,6 +49,7 @@ before_install:
   # workaround the "too many SQL variables" error which happens when SQLite's
   # SQLITE_MAX_VARIABLE_NUMBER parameter is set to the default value (999).
   - sudo cp /usr/bin/php7.3 `which php`
+  - php --version
   - echo 'sendmail_path = /bin/true' | sudo tee -a `php -r 'echo php_ini_loaded_file();'`
   - composer self-update
     # Use node version set in .nvmrc file.
