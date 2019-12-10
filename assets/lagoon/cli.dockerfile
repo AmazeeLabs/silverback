@@ -11,6 +11,9 @@ RUN rm -rf /app/node_modules
 FROM amazeeio/php:7.2-cli-drupal
 COPY --from=builder /app /app
 
+# Config directory should be non-writable.
+RUN chmod 755 /app/web/sites/default
+
 ENV NODE_ENV production
 
 # Define where the Drupal Root is located
