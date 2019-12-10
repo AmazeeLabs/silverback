@@ -12,7 +12,7 @@ FROM amazeeio/php:7.2-cli-drupal
 COPY --from=builder /app /app
 
 # Config directory should be non-writable.
-RUN chmod 755 /app/web/sites/default
+RUN chmod 755 /app/web/sites/default && chmod 644 /app/web/sites/default/*
 
 ENV NODE_ENV production
 
