@@ -10,6 +10,7 @@
         }
     ],
     "require": {
+        "ext-zip": "*",
         "alchemy/zippy": "^0.4.9",
         "cweagans/composer-patches": "^1.6.5",
         "drupal/admin_toolbar": "^1",
