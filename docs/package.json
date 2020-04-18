@@ -4,11 +4,9 @@
   "description": "[![Build Status](https://travis-ci.com/AmazeeLabs/silverback.svg?branch=master)](https://travis-ci.com/AmazeeLabs/silverback)",
   "main": "index.js",
   "scripts": {
-    "start": "vuepress dev",
-    "build": "vuepress build",
-    "docz:dev": "docz dev",
-    "docz:build": "docz build",
-    "docz:serve": "docz build && docz serve"
+    "dev": "docz dev",
+    "build": "docz build",
+    "serve": "docz serve"
   },
   "author": "",
   "license": "ISC",
@@ -18,8 +16,7 @@
     "gatsby-theme-docz": "^2.3.1",
     "path": "^0.12.7",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "vuepress": "^1.4.1"
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
     "@types/react": "^16.9.34",
