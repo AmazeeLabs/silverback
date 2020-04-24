@@ -1,3 +1,8 @@
+---
+menu: Development
+route: development-workflow
+---
+
 # Development workflow
 
 To get the most out of (and in to) `amazeelabs/silverback`, the development process should follow a common pattern:
@@ -13,7 +18,7 @@ To get the most out of (and in to) `amazeelabs/silverback`, the development proc
     * Example configuration in `config`.
 6. Apply the pull request as a patch in your projects `composer.json`.
 7. If there are dependency changes, you have to add them temporarily to your project's
-`composer.json`. Composer patches can't affect dependencies since they are collecteded before patches are applied.
+`composer.json`. Composer patches can't affect dependencies since they are collected before patches are applied.
 
 ## Working on dependencies
 
@@ -79,4 +84,4 @@ the dependency aliases to this file ...
 }
 ```
 
-... and run `composer update` to include the local packages.
+...and run `composer update` to include the local packages.

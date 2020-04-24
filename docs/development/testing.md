@@ -1,12 +1,17 @@
+---
+menu: Development
+route: testing
+---
+
 # Testing
 
 ## Test content
 
-Silverback assumes that production databases are somewhat confidential and copying them all over the place might be a major security risk. So, no database syncing. Every new feature should provide illustrative test content by including a *test content module*, that contains [`default_content`](https://www.drupal.org/project/default_content) exports or install hooks to create reproducible and testable content.
+Silverback assumes that production databases are somewhat confidential and copying them all over the place might be a major security risk. So, no database syncing. Every new feature should provide illustrative test content by including a _test content module_, that contains [`default_content`](https://www.drupal.org/project/default_content) exports or install hooks to create reproducible and testable content.
 
 > After `silverback setup` a project has to be fully operational and testable.
 
-***TODO:** More detailed instructions for providing default content.*
+_**TODO:** More detailed instructions for providing default content._
 
 ## Running tests
 
@@ -33,9 +38,9 @@ You can learn how to write standard javascript tests from the [Cypress documenta
 
 ### Behavioral testing
 
-The preferred way for writing tests is to use [Gherkin](https://cucumber.io/docs/gherkin/) to provide a specification of your feature ***before*** implementing it, and then adding step definitions to actually test your application.
+The preferred way for writing tests is to use [Gherkin](https://cucumber.io/docs/gherkin/) to provide a specification of your feature **_before_** implementing it, and then adding step definitions to actually test your application.
 
-One general misconception about behavior testing is to think it is there so you don't have to write test code but just *"plain English"*. *But that's not true!* As a side effect, you *might* be able to reuse some step definitions here and there, but the main goal is to create digestable feature definitions that all stakeholders can understand and participate on.
+One general misconception about behavior testing is to think it is there so you don't have to write test code but just _"plain English"_. _But that's not true!_ As a side effect, you _might_ be able to reuse some step definitions here and there, but the main goal is to create digestible feature definitions that all stakeholders can understand and participate on.
 
 There is a lot of literature on writing good test specifications:
 
@@ -60,8 +65,8 @@ Feature: Login
     Then I should see the administration toolbar
 ```
 
-This feature specification lives in any subfolder of `tests/cypress/integration`, where you can also find the full example of the login feature.
-The tags the scenarios are annotated with allow to control *which* tests are executed. The Travis configuration will by default only execute tests that are tagged with `@COMPLETED`, so feature definitions can be added and worked on without breaking tests.
+This feature specification lives in any sub-folder of `tests/cypress/integration`, where you can also find the full example of the login feature.
+The tags the scenarios are annotated with allow to control _which_ tests are executed. The Travis configuration will by default only execute tests that are tagged with `@COMPLETED`, so feature definitions can be added and worked on without breaking tests.
 
 The corresponding step definitions look like this:
 
@@ -72,14 +77,19 @@ const login = (user, pass) => () => {
   cy.visit('/user/login');
   cy.get('#edit-name').type(user);
   cy.get('#edit-pass').type(pass);
-  cy.get('#edit-submit').contains('Log in').click();
+  cy.get('#edit-submit')
+    .contains('Log in')
+    .click();
 };
 
 Given(/^I am on the login screen$/, () => {
   cy.visit('/user/login');
 });
 
-When(/^I use the administration credentials to log in$/, login("admin", "admin"));
+When(
+  /^I use the administration credentials to log in$/,
+  login('admin', 'admin')
+);
 
 Then(/^I should see the administration toolbar$/, () => {
   cy.get('#toolbar-bar');
@@ -92,17 +102,17 @@ We use [cucumber.js](https://cucumber.io/) and regular expressions to map readab
 
 ### Jira integration
 
-You can use the [Behave Pro](https://www.hindsightsoftware.com/behave-pro) extension for Jira to maintain and discuss your specifications right alongside your tickets, which is a great way to make them more visible to all the stakeholders that understand *git* as an insult.
+You can use the [Behave Pro](https://www.hindsightsoftware.com/behave-pro) extension for Jira to maintain and discuss your specifications right alongside your tickets, which is a great way to make them more visible to all the stakeholders that understand _git_ as an insult.
 
 Silverback comes with a `silverback download-tests` command that will pull all feature specifications for a project. To enable it, you just have to add some variables to the `.env` file at the root of the project:
 
-* `SB_JIRA_HOST`: The domain name of the Jira instance.
-* `SB_JIRA_USER`: The Jira user account.
-* `SB_JIRA_PASS`: The Jira account password.
-* `SB_JIRA_PROJECTS`: A space separated list of Jira projects as `[shortcut]:[project id]` pairs. For example: `PROJ:12345`. To get your Jira project ID you might have to consult the instance administrator.
+- `SB_JIRA_HOST`: The domain name of the Jira instance.
+- `SB_JIRA_USER`: The Jira user account.
+- `SB_JIRA_PASS`: The Jira account password.
+- `SB_JIRA_PROJECTS`: A space separated list of Jira projects as `[shortcut]:[project id]` pairs. For example: `PROJ:12345`. To get your Jira project ID you might have to consult the instance administrator.
 
-Tests are downloaded to project specific subfolders of `tests/cypress/integration`, (e.g. `tests/cypress/integration/PROJ`) and *should not be added to the git repository*, since they may change outside of the development workflow.
+Tests are downloaded to project specific sub-folders of `tests/cypress/integration`, (e.g. `tests/cypress/integration/PROJ`) and _should not be added to the git repository_, since they may change outside of the development workflow.
 
-Scenarios downloaded from Jira will automatically be tagged based on their ticket, assignee and workflow state. Scenarios of tickets that are in progress are marked as `@WIP` while everything that is considered *done* has the tag `@COMPLETED`. Thats how the [Travis] configuration will only execute tests that are actually worth executing. For local development it might make sense to set the `CYPRESS_TAGS` environment variable to `@assignee:my-jira-name and @WIP` to only run tests for tickets that are assigned to oneself and currently in progress. It is also possible to add custom tags to scenarios in Jira.
+Scenarios downloaded from Jira will automatically be tagged based on their ticket, assignee and workflow state. Scenarios of tickets that are in progress are marked as `@WIP` while everything that is considered _done_ has the tag `@COMPLETED`. Thats how the [Travis](https://travis-ci.com/) configuration will only execute tests that are actually worth executing. For local development it might make sense to set the `CYPRESS_TAGS` environment variable to `@assignee:my-jira-name and @WIP` to only run tests for tickets that are assigned to oneself and currently in progress. It is also possible to add custom tags to scenarios in Jira.
 
 **Note:** The Cucumber implementation currently only takes tags on scenarios into account. [Behave Pro](https://www.hindsightsoftware.com/behave-pro) also allows to tag whole features, but these are ignored by the test runner (TODO: fix it in https://github.com/TheBrainFamily/cypress-cucumber-preprocessor).

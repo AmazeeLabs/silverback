@@ -1,3 +1,8 @@
+---
+menu: Development
+route: lagoon
+---
+
 # Lagoon
 
 The project is ready to be used with amazeeio local development flow. Just install [Pygmy], run `docker-compose up -d` and the site is ready to be installed.

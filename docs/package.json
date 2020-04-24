@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "docz dev",
     "build": "docz build",
-    "serve": "docz serve"
+    "serve": "docz serve",
+    "clean": "rm -rf .docz"
   },
   "author": "",
   "license": "ISC",

@@ -1,3 +1,8 @@
+---
+menu: Development
+route: debugging
+---
+
 # Debugging
 
 **Xdebug** is a great PHP debugging tool. Unfortunately it slows down PHP by around 20-25%. For tests and `composer` and `drush` commands, it can be even slower. That's why debugging isn't turned on by default and why you should turn off debugging when you are done using it.

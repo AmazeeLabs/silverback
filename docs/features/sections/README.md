@@ -1,8 +1,14 @@
+---
+menu: Features
+name: Sections Editor
+route: sections-editor
+---
+
 # Sections editor
 
 ## Preface
 
-The [CKEditor5 Sections module] for Drupal allows to create custom WYSIWYG 
+The [CKEditor5 Sections module] for Drupal allows to create custom WYSIWYG
 interfaces for complex document structures by composing simple html templates.
 
 [CKEditor5 Sections module]: https://www.drupal.org/project/ckeditor5_sections
@@ -22,7 +28,7 @@ allowed* input format and cannot be configured at the moment.
 
 The editor for this field will use the template as its *"Root element"*. This template can still have sub-templates
 (more about that in the section [containers](#containers)), but it is useful if you have to maintain strict control
-over the document structure, like for a layouted landing page.
+over the document structure, like for a landing page layout.
 
 Proceed then to configure the form display mode to use `Sections editor`.
 
@@ -79,7 +85,7 @@ to work.
 
 ### Media previews
 
-To display media previews when directly outputting the editor content, the 
+To display media previews when directly outputting the editor content, the
 *Sections media* output filter has to be enabled.
 
 ![Media preview filter](./images/config_5.png)
@@ -182,7 +188,7 @@ The following rules apply:
 
 * If an element has an `itemtype` attribute, it is treated like an object.
   * The typename will be extracted to the `__type` property.
-  * The HTML content will be extracted to the `__content` property.  
+  * The HTML content will be extracted to the `__content` property.
   ***TODO:** This doesn't have to happen for each element. Define a sensible
   rule for that.*
   * All attributes except `class` and `data-` are copied over to the result.
@@ -191,9 +197,9 @@ The following rules apply:
 with the defined property name.
   * If the element has *no* `itemtype` attribute, the elements html content
   is used as the result value.
-  * If the element *does* have an `itemtype` attribute, the complex result 
+  * If the element *does* have an `itemtype` attribute, the complex result
   object is used as the result value.
-  
+
 [HTML datasets]: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset
 
 Example template

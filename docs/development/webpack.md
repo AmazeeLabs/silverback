@@ -1,3 +1,8 @@
+---
+menu: Development
+route: webpack
+---
+
 # Webpack
 
 The project is set up to use webpack to bundle drupal libraries, so they can be written in modern javascript and import packages from npm. Setup:

@@ -1,7 +1,9 @@
 export default {
   title: "Silverback",
-  description: "Silverback documentation.",
+  description: "Documentation for Silverback.",
+  base: "/silverback",
   typescript: true,
+  menu: ["Home", "Development", "Features"],
   gatsbyRemarkPlugins: [
     {
       resolve: "gatsby-remark-vscode",

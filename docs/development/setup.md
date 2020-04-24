@@ -1,3 +1,9 @@
+---
+menu: Development
+name: Setup
+route: setup
+---
+
 # Installation
 
 ## Prerequisites
@@ -28,8 +34,8 @@ yarn
 
 Note that the seemingly unnecessary extra `composer install` is to allow patches to be applied.
 
-If you've set up `direnv` correctly, it will complain at this point that there is an unknown `.envrc` file. Just execute `direnv allow` to enable it. From now on environment variables and executable search paths will be set automatically whenever you enter this directory. Here is how it should look in case of a correct installation:  
-```
+If you've set up `direnv` correctly, it will complain at this point that there is an unknown `.envrc` file. Just execute `direnv allow` to enable it. From now on environment variables and executable search paths will be set automatically whenever you enter this directory. Here is how it should look in case of a correct installation:
+```bash
 me@local:~/Projects $ cd my-project/
 direnv: error .envrc is blocked. Run `direnv allow` to approve its content.
 me@local:~/Projects/my-project $ direnv allow
@@ -48,7 +54,7 @@ Requiring and initiating the package did a couple of things:
 * Configuration files for Travis, Lando and amazee.io have been created.
 * Your composer.json has been slightly modified.
 * An environment-based `settings.php` has been placed in `web/sites/default`.
-* A `tests` directory with a fully operational [Cypress] setup appeared.
+* A `tests` directory with a fully operational [Cypress](https://www.cypress.io/) setup appeared.
 * A `.env` file was initialised that you can use to configure your local environment.
 
 ## Updating
