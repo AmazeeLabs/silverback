@@ -6364,10 +6364,10 @@ gatsby-recipes@^0.0.6:
     ws "^7.2.3"
     xstate "^4.8.0"
 
-gatsby-remark-vscode@^2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-vscode/-/gatsby-remark-vscode-2.1.2.tgz#c0644b1c51ca2dfc06f7bb661e8973191e0493ea"
-  integrity sha512-9owTmsM8+5JSARav3VzotA5+U30EzpCemaZLJhlf+v9cvd7hcSX9DzLH87rIhcEpalmMYnrwOSnLGqt5WGkfGA==
+gatsby-remark-vscode@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-vscode/-/gatsby-remark-vscode-3.0.0.tgz#99a6a90e29ca8d5901bbb1d1c3e9ccefac95e58f"
+  integrity sha512-wk1V2CdxmybdcyFRsEzk3u4qN3PAVFvC9rMsqDq1K/mcSvhvb11GbnTxokCTWQa6CXuv7z7lcnWbdO9vYRYKzA==
   dependencies:
     decompress "^4.2.0"
     json5 "^2.1.1"
