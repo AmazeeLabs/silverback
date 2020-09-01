@@ -9,6 +9,7 @@ module:
   color: 0
   comment: 0
   config: 0
+  conflict: 0
   contact: 0
   content_moderation: 0
   contextual: 0

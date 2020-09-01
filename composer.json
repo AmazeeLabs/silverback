@@ -9,12 +9,6 @@
             "role": "Master of desaster"
         }
     ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/amazeelabs/cypress"
-        }
-    ],
     "require": {
         "ext-zip": "*",
         "alchemy/zippy": "^0.4.9",
@@ -23,8 +17,8 @@
         "drupal/ckeditor5_sections": "dev-1.x",
         "drupal/components": "^1.1",
         "drupal/console": "^1.0.2",
-        "drupal/core": "^8.8.0",
-        "drupal/cypress": "dev-drush-10-1",
+        "drupal/core": "^8.9.3",
+        "drupal/cypress": "1.0-beta4",
         "drupal/delivery": "dev-1.x",
         "drupal/entity_usage": "^2.0@alpha",
         "drupal/environment_indicator": "^3.0",
@@ -57,6 +51,7 @@
         }
     },
     "extra": {
+        "enable-patching": true,
         "patches": {
             "drupal/core": {
                 "#2718657 - Drupal\\language\\LanguageNegotiator::updateConfiguration() is passed a NULL": "https://www.drupal.org/files/issues/2019-02-28/language-2718657-17.patch",
