@@ -26,7 +26,7 @@ content:
   field_sections:
     weight: 2
     settings:
-      rows: '5'
+      rows: 5
       placeholder: ''
     third_party_settings: {  }
     type: sections_editor

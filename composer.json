@@ -58,7 +58,10 @@
                 "#3045177 workspace specific latest revision": "https://www.drupal.org/files/issues/2019-04-08/3045177-10.patch"
             },
             "drupal/delivery": {
-                "Fix empty active workspace in language and url language negotation": "https://patch-diff.githubusercontent.com/raw/AmazeeLabs/delivery/pull/31.patch"
+                "Use core conflict resolver manager": "https://patch-diff.githubusercontent.com/raw/AmazeeLabs/delivery/pull/32.patch"
+            },
+            "drupal/ckeditor5_sections": {
+                "Schema config for sections_editor widget settings": "https://patch-diff.githubusercontent.com/raw/AmazeeLabs/ckeditor5_sections/pull/115.patch"
             }
         }
 
