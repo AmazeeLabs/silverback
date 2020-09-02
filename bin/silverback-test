@@ -32,8 +32,10 @@ if [[ -d packages/drupal ]]; then vendor/bin/phpunit packages/drupal || exit 1; 
 
 export CYPRESS_BASE_URL=http://localhost:8888
 
-if [[ $1 ]]; then
-  vendor/bin/drush cypress:run "integration/$1/**/*.feature" || exit 1;
+if [[ $1 == 'silverback' ]]; then
+  vendor/bin/drush cypress:run silverback || exit 1;
+elif [[ $1 ]]; then
+    vendor/bin/drush cypress:run "integration/$1/**/*.feature" || exit 1;
 else
   vendor/bin/drush cypress:run || exit 1;
 fi

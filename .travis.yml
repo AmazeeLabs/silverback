@@ -64,6 +64,7 @@ install:
 - echo $BRANCH
 - COMPOSER_MEMORY_LIMIT=-1 composer require "amazeelabs/silverback:dev-$BRANCH" --prefer-source
 - ./vendor/bin/silverback init
+- COMPOSER_MEMORY_LIMIT=-1 composer require phpunit/phpunit:^7 symfony/phpunit-bridge phpspec/prophecy sebastian/global-state:^2 sebastian/environment:^3.1 phpunit/php-code-coverage:^6 mikey179/vfsstream
 - COMPOSER_MEMORY_LIMIT=-1 composer update --lock
 - source .envrc
 - yarn
@@ -73,7 +74,7 @@ script:
 - ./vendor/bin/silverback setup
 - ./vendor/bin/drush en cypress -y
 - ./vendor/bin/drush cypress:list
-- silverback-test silverback
+- ./vendor/bin/silverback-test silverback
 - kill $(jobs -p) || true
 
 notifications:
