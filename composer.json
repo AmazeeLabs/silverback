@@ -13,7 +13,7 @@
         "ext-zip": "*",
         "alchemy/zippy": "^0.4.9",
         "cweagans/composer-patches": "^1.6.5",
-        "drupal/admin_toolbar": "8.2.3",
+        "drupal/admin_toolbar": "^2",
         "drupal/ckeditor5_sections": "dev-1.x",
         "drupal/components": "^1.1",
         "drupal/console": "^1.0.2",
@@ -57,8 +57,8 @@
                 "#2867707 Conflict API": "https://www.drupal.org/files/issues/2019-06-24/2867707-33.drupal.WI-Phase-H-Conflict-management-and-local-workspace-merging-support.patch",
                 "#3045177 workspace specific latest revision": "https://www.drupal.org/files/issues/2019-04-08/3045177-10.patch"
             },
-            "Fix empty active workspace in language and url language negotation": {
-                "drupal/delivery": "https://patch-diff.githubusercontent.com/raw/AmazeeLabs/delivery/pull/31.patch"
+            "drupal/delivery": {
+                "Fix empty active workspace in language and url language negotation": "https://patch-diff.githubusercontent.com/raw/AmazeeLabs/delivery/pull/31.patch"
             }
         }
 
