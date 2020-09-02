@@ -69,10 +69,10 @@ install:
 - yarn
 
 script:
-- silverback download-tests
-- cp cypress/integration/jira/SLB/* vendor/amazeelabs/silverback/cypress/integration
-- vendor/bin/silverback setup && vendor/bin/drush en cypress -y
-- vendor/bin/drush cypress:list
+- mkdir web/sites/default/files
+- ./vendor/bin/silverback setup
+- ./vendor/bin/drush en cypress -y
+- ./vendor/bin/drush cypress:list
 - silverback-test silverback
 - kill $(jobs -p) || true
 

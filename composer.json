@@ -51,7 +51,17 @@
     },
     "extra": {
         "enable-patching": true,
-        "patches": {}
+        "patches": {
+            "drupal/core": {
+                "#2718657 - Drupal\\language\\LanguageNegotiator::updateConfiguration() is passed a NULL": "https://www.drupal.org/files/issues/2019-02-28/language-2718657-17.patch",
+                "#2867707 Conflict API": "https://www.drupal.org/files/issues/2019-06-24/2867707-33.drupal.WI-Phase-H-Conflict-management-and-local-workspace-merging-support.patch",
+                "#3045177 workspace specific latest revision": "https://www.drupal.org/files/issues/2019-04-08/3045177-10.patch"
+            },
+            "Fix empty active workspace in language and url language negotation": {
+                "drupal/delivery": "https://patch-diff.githubusercontent.com/raw/AmazeeLabs/delivery/pull/31.patch"
+            }
+        }
+
     },
     "composer-exit-on-patch-failure": true
 }
