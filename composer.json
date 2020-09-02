@@ -13,13 +13,12 @@
         "ext-zip": "*",
         "alchemy/zippy": "^0.4.9",
         "cweagans/composer-patches": "^1.6.5",
-        "drupal/admin_toolbar": "^2.0",
+        "drupal/admin_toolbar": "8.2.3",
         "drupal/ckeditor5_sections": "dev-1.x",
         "drupal/components": "^1.1",
         "drupal/console": "^1.0.2",
-        "drupal/core": "^8.9.3",
         "drupal/cypress": "1.0-beta4",
-        "drupal/delivery": "dev-1.x",
+        "drupal/delivery": "dev-1.x#9324d20dabe27ddd935e7d3258d7880a51f3e43d",
         "drupal/entity_usage": "^2.0@alpha",
         "drupal/environment_indicator": "^3.0",
         "drupal/field_group": "^3.0@RC",
@@ -52,13 +51,7 @@
     },
     "extra": {
         "enable-patching": true,
-        "patches": {
-            "drupal/core": {
-                "#2718657 - Drupal\\language\\LanguageNegotiator::updateConfiguration() is passed a NULL": "https://www.drupal.org/files/issues/2019-02-28/language-2718657-17.patch",
-                "#2867707 Conflict API": "https://www.drupal.org/files/issues/2019-06-24/2867707-33.drupal.WI-Phase-H-Conflict-management-and-local-workspace-merging-support.patch",
-                "#3045177 workspace specific latest revision": "https://www.drupal.org/files/issues/2019-04-08/3045177-10.patch"
-            }
-        }
+        "patches": {}
     },
     "composer-exit-on-patch-failure": true
 }
