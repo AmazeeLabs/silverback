@@ -38,7 +38,7 @@ if [[ $1 == 'silverback' ]]; then
 elif [[ $1 ]]; then
     $DRUSH_PATH cypress:run "integration/$1/**/*.feature" || exit 1;
 else
-  DRUSH_PATH cypress:run || exit 1;
+  $DRUSH_PATH cypress:run || exit 1;
 fi
 
 
