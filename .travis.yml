@@ -57,7 +57,7 @@ before_install:
   - nvm install && nvm use
 
 install:
-- COMPOSER_MEMORY_LIMIT=-1 composer create-project drupal/recommended-project:^8 $DRUPAL_BUILD_DIR --no-interaction
+- COMPOSER_MEMORY_LIMIT=-1 composer create-project drupal/recommended-project:^8.9 $DRUPAL_BUILD_DIR --no-interaction
 - cd $DRUPAL_BUILD_DIR
 - php -r "\$json = json_decode(file_get_contents('composer.json'), TRUE); \$json['repositories'][] = ['type' => 'path', 'url' => '$TRAVIS_BUILD_DIR' ]; \$json['extra']['enable-patching'] = TRUE; file_put_contents('composer.json', json_encode(\$json, JSON_PRETTY_PRINT));"
 - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
