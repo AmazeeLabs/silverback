@@ -19,7 +19,7 @@ To create or work on a Silverback project the following tools have to be availab
 
 Given you already created a composer based Drupal project like this:
 ```bash
-composer create-project drupal-composer/drupal-project:8.x-dev my-project --no-interaction
+composer create-project drupal/recommended-project:^8 my-project --no-interaction
 ```
 
 You just have to require the `amazeelabs/silverback` composer package and initialise it:
