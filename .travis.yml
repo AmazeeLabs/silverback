@@ -74,7 +74,7 @@ script:
 - ./vendor/bin/silverback setup
 - ./vendor/bin/drush en cypress -y
 - ./vendor/bin/drush cypress:list
-- ./vendor/bin/silverback-test silverback
+- ./vendor/bin/silverback-test silverback --vvv ---debug
 - kill $(jobs -p) || true
 
 notifications:
