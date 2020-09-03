@@ -26,7 +26,7 @@ You just have to require the `amazeelabs/silverback` composer package and initia
 
 ```bash
 cd my-project
-composer require amazeelabs/silverback
+composer require amazeelabs/silverback:8.9.x-dev
 ./vendor/bin/silverback init
 composer install
 yarn
