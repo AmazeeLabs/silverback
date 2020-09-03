@@ -62,7 +62,7 @@ install:
 - php -r "\$json = json_decode(file_get_contents('composer.json'), TRUE); \$json['repositories'][] = ['type' => 'path', 'url' => '$TRAVIS_BUILD_DIR' ]; \$json['extra']['enable-patching'] = TRUE; file_put_contents('composer.json', json_encode(\$json, JSON_PRETTY_PRINT));"
 - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
 - echo $BRANCH
-- COMPOSER_MEMORY_LIMIT=-1 composer require "amazeelabs/silverback:dev-$BRANCH" --prefer-source
+- COMPOSER_MEMORY_LIMIT=-1 composer require "amazeelabs/silverback:$BRANCH-dev" --prefer-source
 - ./vendor/bin/silverback init
 - COMPOSER_MEMORY_LIMIT=-1 composer require phpunit/phpunit:^7 symfony/phpunit-bridge phpspec/prophecy sebastian/global-state:^2 sebastian/environment:^3.1 phpunit/php-code-coverage:^6 mikey179/vfsstream
 - COMPOSER_MEMORY_LIMIT=-1 composer update --lock
