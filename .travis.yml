@@ -16,6 +16,7 @@ addons:
       - sourceline: 'ppa:ondrej/php'
     packages:
       - libgconf-2-4
+      - direnv
       # Install PHP and extensions.
       - php7.4
       - php7.4-common
