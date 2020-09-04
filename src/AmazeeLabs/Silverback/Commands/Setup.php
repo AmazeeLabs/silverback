@@ -23,6 +23,11 @@ class Setup extends SilverbackCommand {
     parent::execute($input, $output);
 
     $siteDir = $input->getOption('cypress') ? 'cypress' : 'default';
+
+    $filesDir = 'web/sites/' . $siteDir . '/files';
+    if (!$this->fileSystem->exists($filesDir)) {
+      $this->fileSystem->mkdir($filesDir);
+    }
     if ($input->getOption('cypress') && !$this->fileSystem->exists('web/sites/' . $siteDir))  {
       $this->copyDir('web/sites/default', 'web/sites/' . $siteDir);
       $this->cleanDir('web/sites/' . $siteDir . '/files');

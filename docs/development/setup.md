@@ -19,20 +19,28 @@ To create or work on a Silverback project the following tools have to be availab
 
 Given you already created a composer based Drupal project like this:
 ```bash
-composer create-project drupal-composer/drupal-project:8.x-dev my-project --no-interaction
+composer create-project drupal/recommended-project:^8 my-project --no-interaction
 ```
 
 You just have to require the `amazeelabs/silverback` composer package and initialise it:
 
 ```bash
 cd my-project
-composer require amazeelabs/silverback
+composer require amazeelabs/silverback:8.9.x-dev
 ./vendor/bin/silverback init
 composer install
 yarn
 ```
 
 Note that the seemingly unnecessary extra `composer install` is to allow patches to be applied.
+
+Yarn requires `node` to be version 10 or above - if you have [nvm](https://github.com/nvm-sh/nvm) installed, you can run:
+
+```bash
+nvm use
+```
+
+This will load the Silverback `.nvmrc` file and auto-select the correct version of `node` for the project.
 
 If you've set up `direnv` correctly, it will complain at this point that there is an unknown `.envrc` file. Just execute `direnv allow` to enable it. From now on environment variables and executable search paths will be set automatically whenever you enter this directory. Here is how it should look in case of a correct installation:
 ```bash
@@ -79,5 +87,14 @@ drush serve
 Now your Drupal installation should be accessible at http://localhost:8888. Admin account credentials can be configured in your `.env` file.
 
 Another invocation of `silverback setup` will scratch the current install and and create a new one. `silverback teardown` will just do the *scratch* part. Running `silverback setup --backup` will create a backup before removing the current install, and `silverback teardown --restore` will bring the latest backup back. These two commands are mainly used by the end to end testing processes to spin up test sites (*TODO: Move test sites to simpletest subsites*).
+
+## Getting a fresh install
+
+Silverback uses different levels of caching. If you've run `silverback setup` previously, and you want to make sure you 
+get a fresh environment, run the following:
+
+```
+(set -x && rm -rf vendor/ && composer i && silverback teardown && silverback clear-cache && (silverback setup || (drush cr && drush -y updb && drush -y cim)) && drush cr)
+```
 
 **Danger:** Currently, there can be only ***one*** backup.

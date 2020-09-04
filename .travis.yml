@@ -5,7 +5,7 @@ sudo: false
 php:
   # This PHP version (which is set by Travis via phpenv) is overridden in the
   # before_install section.
-  - '7.3'
+  - '7.4'
 
 addons:
   apt:
@@ -16,26 +16,27 @@ addons:
       - sourceline: 'ppa:ondrej/php'
     packages:
       - libgconf-2-4
+      - direnv
       # Install PHP and extensions.
-      - php7.3
-      - php7.3-common
-      - php7.3-xml
-      - php7.3-xmlrpc
-      - php7.3-curl
-      - php7.3-imap
-      - php7.3-mbstring
-      - php7.3-opcache
-      - php7.3-soap
-      - php7.3-json
-      - php7.3-zip
-      - php7.3-intl
-      - php7.3-sqlite
-      - php7.3-gd
-      - php7.3-imagick
+      - php7.4
+      - php7.4-common
+      - php7.4-xml
+      - php7.4-xmlrpc
+      - php7.4-curl
+      - php7.4-imap
+      - php7.4-mbstring
+      - php7.4-opcache
+      - php7.4-soap
+      - php7.4-json
+      - php7.4-zip
+      - php7.4-intl
+      - php7.4-sqlite
+      - php7.4-gd
+      - php7.4-imagick
 
 env:
   global:
-  - DRUPAL_BUILD_DIR=$TRAVIS_BUILD_DIR/../drupal
+  - DRUPAL_BUILD_DIR=$TRAVIS_BUILD_DIR/../recommended-project
   - COMPOSER_MEMORY_LIMIT=-1
 
 cache:
@@ -49,7 +50,7 @@ before_install:
   # Override the phpenv's PHP to the one we installed via APT. We do this to
   # workaround the "too many SQL variables" error which happens when SQLite's
   # SQLITE_MAX_VARIABLE_NUMBER parameter is set to the default value (999).
-  - sudo cp /usr/bin/php7.3 `which php`
+  - sudo cp /usr/bin/php7.4 `which php`
   - php --version
   - echo 'sendmail_path = /bin/true' | sudo tee -a `php -r 'echo php_ini_loaded_file();'`
   - composer self-update
@@ -57,24 +58,24 @@ before_install:
   - nvm install && nvm use
 
 install:
-- composer create-project drupal-composer/drupal-project:8.x-dev $DRUPAL_BUILD_DIR --no-interaction
+- COMPOSER_MEMORY_LIMIT=-1 composer create-project drupal/recommended-project:^8.9 $DRUPAL_BUILD_DIR --no-interaction
 - cd $DRUPAL_BUILD_DIR
-- composer remove drupal/core
-- php -r "\$json = json_decode(file_get_contents('composer.json'), TRUE); \$json['repositories'][] = ['type' => 'path', 'url' => '$TRAVIS_BUILD_DIR' ]; file_put_contents('composer.json', json_encode(\$json, JSON_PRETTY_PRINT));"
+- php -r "\$json = json_decode(file_get_contents('composer.json'), TRUE); \$json['repositories'][] = ['type' => 'path', 'url' => '$TRAVIS_BUILD_DIR' ]; \$json['extra']['enable-patching'] = TRUE; file_put_contents('composer.json', json_encode(\$json, JSON_PRETTY_PRINT));"
 - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
 - echo $BRANCH
-- COMPOSER_MEMORY_LIMIT=-1 composer require "amazeelabs/silverback:dev-$BRANCH"
+- COMPOSER_MEMORY_LIMIT=-1 composer require "amazeelabs/silverback:$BRANCH-dev" --prefer-source
 - ./vendor/bin/silverback init
-- composer install
+- COMPOSER_MEMORY_LIMIT=-1 composer require phpunit/phpunit:^7 symfony/phpunit-bridge phpspec/prophecy sebastian/global-state:^2 sebastian/environment:^3.1 phpunit/php-code-coverage:^6 mikey179/vfsstream
+- COMPOSER_MEMORY_LIMIT=-1 composer update --lock
 - source .envrc
 - yarn
 
 script:
-- silverback download-tests
-- cp cypress/integration/jira/SLB/* vendor/amazeelabs/silverback/cypress/integration
-- vendor/bin/silverback setup && vendor/bin/drush en cypress -y
-- vendor/bin/drush cypress:list
-- silverback-test silverback
+- mkdir web/sites/default/files
+- ./vendor/bin/silverback setup
+- ./vendor/bin/drush en cypress -y
+- ./vendor/bin/drush cypress:list
+- ./vendor/bin/silverback-test silverback
 - kill $(jobs -p) || true
 
 notifications:

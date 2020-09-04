@@ -17,11 +17,12 @@ export CYPRESS_BASE_URL=http://localhost:8888
 export DRUPAL_CYPRESS=on
 
 # Start drush server
-drush serve -q :8888 &
+[[ -z $(which drush) ]] && DRUSH_PATH="./vendor/bin/drush" || DRUSH_PATH="$(which drush)"
+$DRUSH_PATH serve -q :8888 &
 
 DRUSH_SERVE_WAIT=0
 until nc -z 127.0.0.1 8888 || ((DRUSH_SERVE_WAIT > 19)); do sleep 1 && echo "Waited $DRUSH_SERVE_WAIT seconds for drush serve."; done
 echo "Drupal server operational."
 
 
-vendor/bin/drush cypress:open
+$DRUSH_PATH cypress:open

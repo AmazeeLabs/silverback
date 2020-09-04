@@ -17,7 +17,8 @@ trap finish EXIT
 [[ -d web/sites/default/files/.sqlite ]] || (vendor/bin/silverback setup && vendor/bin/drush en cypress -y)
 
 # Start drush serve to serve Drupal.
-drush serve -q :8888 &
+[[ -z $(which drush) ]] && DRUSH_PATH="./vendor/bin/drush" || DRUSH_PATH="$(which drush)"
+$DRUSH_PATH serve -q :8888 &
 
 DRUSH_SERVE_WAIT=0
 until nc -z 127.0.0.1 8888 || ((DRUSH_SERVE_WAIT > 19)); do sleep 1 && echo "Waited $DRUSH_SERVE_WAIT seconds for drush serve."; done
@@ -32,10 +33,12 @@ if [[ -d packages/drupal ]]; then vendor/bin/phpunit packages/drupal || exit 1; 
 
 export CYPRESS_BASE_URL=http://localhost:8888
 
-if [[ $1 ]]; then
-  vendor/bin/drush cypress:run "integration/$1/**/*.feature" || exit 1;
+if [[ $1 == 'silverback' ]]; then
+  $DRUSH_PATH cypress:run silverback --debug || exit 1;
+elif [[ $1 ]]; then
+    $DRUSH_PATH cypress:run --debug "integration/$1/**/*.feature" || exit 1;
 else
-  vendor/bin/drush cypress:run || exit 1;
+  $DRUSH_PATH cypress:run --debug || exit 1;
 fi
 
 
