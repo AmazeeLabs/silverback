@@ -9,9 +9,9 @@ regions:
   content: 'Content'
 
 component-libraries:
-  storybook:
+  twig:
     paths:
       - ../../../../storybook/twig
 
 libraries:
-  - storybook/storybook
+  - storybook/twig

@@ -1,5 +1,4 @@
 const path = require('path');
-
 // Import dependencies.
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -8,6 +7,7 @@ const common = require('./webpack.common');
 
 // Webpack configuration.
 module.exports = {
+  mode: 'development',
   entry: {
     scripts: './storybook/scripts.ts',
     editor: './storybook/editor.ts',
