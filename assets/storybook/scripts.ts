@@ -1,5 +1,6 @@
 // Globally add web components polyfills.
-import '@babel/polyfill';
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 import '@webcomponents/webcomponentsjs/webcomponents-bundle';
 
 import './styles.css';

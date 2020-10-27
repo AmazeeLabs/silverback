@@ -12,17 +12,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "algoliasearch": "^4.3.0",
+    "algoliasearch": "^4.5.1",
     "docz": "^2.3.1",
-    "gatsby-plugin-algolia": "^0.11.1",
-    "gatsby-remark-vscode": "^2.1.2",
+    "gatsby-plugin-algolia": "^0.14.1",
+    "gatsby-remark-vscode": "^3.1.0",
     "gatsby-theme-docz": "^2.3.1",
     "path": "^0.12.7",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
   },
   "devDependencies": {
-    "@types/react": "^16.9.37",
+    "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8"
   }
 }

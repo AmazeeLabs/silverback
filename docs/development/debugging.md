@@ -17,7 +17,7 @@ You will need to setup your browser so that it triggers an Xdebug session. This 
 * Chrome extension: [Xdebug Helper](https://chrome.google.com/webstore/search/xdebug)
 * Firefox add-on: [Xdebug Helper](https://addons.mozilla.org/en-US/firefox/addon/xdebug-helper-for-firefox/)
 
-**Note on Twig debugging:** Twig debugging won't work on old Silverback sites. Ensure `sites/default/amazeeio.development.services.yml` file has `parameters: twig.config: cache` set to `true`. If it is set to `false`, you can safely commit the change to your git repository.
+**Note on Twig debugging:** Twig debugging won't work on old Silverback sites. Ensure the `sites/default/amazeeio.development.services.yml` or `sites/default/development.services.yml` file has `parameters: twig.config: cache` set to `true`. If it is set to `false`, you can safely commit the change to your git repository.
 
 **Note on Windows debugging:** If you are using Windows, you will first need to install some software. See the section below on [Debugging on Windows 10](#debugging-on-windows-10).
 
