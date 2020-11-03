@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "algoliasearch": "^4.5.1",
+    "algoliasearch": "^4.6.0",
     "docz": "^2.3.1",
     "gatsby-plugin-algolia": "^0.14.1",
     "gatsby-remark-vscode": "^3.1.0",
