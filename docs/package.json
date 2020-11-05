@@ -14,7 +14,7 @@
   "dependencies": {
     "algoliasearch": "^4.6.0",
     "docz": "^2.3.1",
-    "gatsby-plugin-algolia": "^0.14.1",
+    "gatsby-plugin-algolia": "^0.15.0",
     "gatsby-remark-vscode": "^3.1.0",
     "gatsby-theme-docz": "^2.3.1",
     "path": "^0.12.7",
