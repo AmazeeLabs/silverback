@@ -5,7 +5,7 @@ sudo: false
 php:
   # This PHP version (which is set by Travis via phpenv) is overridden in the
   # before_install section.
-  - '7.3'
+  - '7.4'
 
 addons:
   apt:
@@ -17,21 +17,21 @@ addons:
     packages:
       - libgconf-2-4
       # Install PHP and extensions.
-      - php7.3
-      - php7.3-common
-      - php7.3-xml
-      - php7.3-xmlrpc
-      - php7.3-curl
-      - php7.3-imap
-      - php7.3-mbstring
-      - php7.3-opcache
-      - php7.3-soap
-      - php7.3-json
-      - php7.3-zip
-      - php7.3-intl
-      - php7.3-sqlite
-      - php7.3-gd
-      - php7.3-imagick
+      - php7.4
+      - php7.4-common
+      - php7.4-xml
+      - php7.4-xmlrpc
+      - php7.4-curl
+      - php7.4-imap
+      - php7.4-mbstring
+      - php7.4-opcache
+      - php7.4-soap
+      - php7.4-json
+      - php7.4-zip
+      - php7.4-intl
+      - php7.4-sqlite
+      - php7.4-gd
+      - php7.4-imagick
 
 env:
   global:
@@ -49,7 +49,7 @@ before_install:
   # Override the phpenv's PHP to the one we installed via APT. We do this to
   # workaround the "too many SQL variables" error which happens when SQLite's
   # SQLITE_MAX_VARIABLE_NUMBER parameter is set to the default value (999).
-  - sudo cp /usr/bin/php7.3 `which php`
+  - sudo cp /usr/bin/php7.4 `which php`
   - php --version
   - echo 'sendmail_path = /bin/true' | sudo tee -a `php -r 'echo php_ini_loaded_file();'`
   - composer self-update
@@ -57,10 +57,10 @@ before_install:
   - nvm install && nvm use
 
 install:
-- composer create-project drupal-composer/drupal-project:8.x-dev $DRUPAL_BUILD_DIR --no-interaction
+- composer create-project drupal/recommended-project $DRUPAL_BUILD_DIR --no-interaction
 - cd $DRUPAL_BUILD_DIR
 - composer remove drupal/core
-- php -r "\$json = json_decode(file_get_contents('composer.json'), TRUE); \$json['repositories'][] = ['type' => 'path', 'url' => '$TRAVIS_BUILD_DIR' ]; file_put_contents('composer.json', json_encode(\$json, JSON_PRETTY_PRINT));"
+- php -r "\$json = json_decode(file_get_contents('composer.json'), TRUE); \$json['repositories'][] = ['type' => 'path', 'url' => '$TRAVIS_BUILD_DIR' ]; \$json['repositories'][] = ['type' => 'vcs', 'url' => 'git@github.com:AmazeeLabs/cypress.git' ]; file_put_contents('composer.json', json_encode(\$json, JSON_PRETTY_PRINT));"
 - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
 - echo $BRANCH
 - COMPOSER_MEMORY_LIMIT=-1 composer require "amazeelabs/silverback:dev-$BRANCH"

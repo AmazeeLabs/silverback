@@ -1,5 +1,6 @@
 name: Storybook
 type: theme
+base theme: false
 description: 'Base theme for using storybook components.'
 package: Core
 version: VERSION

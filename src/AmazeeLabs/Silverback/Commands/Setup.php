@@ -17,6 +17,7 @@ class Setup extends SilverbackCommand {
     $this->addOption('backup', 'b', InputOption::VALUE_NONE, 'Create a backup of the current site.');
     $this->addOption('force', 'f', InputOption::VALUE_NONE, 'Force installation.');
     $this->addOption('cypress', 'c', InputOption::VALUE_NONE, 'Use cypress subdir.');
+    $this->addOption('profile', 'p', InputOption::VALUE_OPTIONAL, 'Use profile config directory.');
   }
 
   protected function execute(InputInterface $input, OutputInterface $output) {
@@ -37,6 +38,13 @@ class Setup extends SilverbackCommand {
 
     if ($input->getOption('backup') && $this->fileSystem->exists('web/sites/' . $siteDir . '/files')) {
       $this->copyDir('web/sites/' . $siteDir . '/files', $this->cacheDir . '/backup');
+    }
+
+    if ($profile = $input->getOption('profile')) {
+      if ($input->getOption('force')) {
+        $this->fileSystem->remove('config/sync');
+      }
+      $this->copyDir('vendor/amazeelabs/silverback/profiles/' . $profile, 'config/sync');
     }
 
     if (!$this->fileSystem->exists('config/sync/core.extension.yml')) {
@@ -74,7 +82,7 @@ class Setup extends SilverbackCommand {
         $this->executeProcess(['./vendor/bin/drush', 'cim', '-y'], $output);
 
         $zippy->create('install-cache.zip', [
-          'files' => 'web/sites/' . $siteDir . '/files',
+          'folder' => 'web/sites/' . $siteDir . '/files',
         ], TRUE);
       }
 

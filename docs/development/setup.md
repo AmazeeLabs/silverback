@@ -81,3 +81,17 @@ Now your Drupal installation should be accessible at http://localhost:8888. Admi
 Another invocation of `silverback setup` will scratch the current install and and create a new one. `silverback teardown` will just do the *scratch* part. Running `silverback setup --backup` will create a backup before removing the current install, and `silverback teardown --restore` will bring the latest backup back. These two commands are mainly used by the end to end testing processes to spin up test sites (*TODO: Move test sites to simpletest subsites*).
 
 **Danger:** Currently, there can be only ***one*** backup.
+
+### Instalation Profiles
+
+You can start from the preconfigured installation profile(currently available profiles: `minimal`. Check `profiles` folder for a new ones).
+
+```bash
+silverback setup --profile=minimal
+drush serve
+```
+If you already have installed configuration and want to revert it to the starting installation profile just run
+
+```bash
+silverback setup --profile=minimal -f
+```
