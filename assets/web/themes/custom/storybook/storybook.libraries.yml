@@ -1,4 +1,4 @@
-storybook:
+twig:
   version: VERSION
   js:
     dist/scripts.js: { preprocess: true }
